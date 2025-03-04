@@ -1,0 +1,10 @@
+{% extends 'content/base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h2>Welcome, {{ user.username }}</h2>
+    <a href="{% url 'video_list' %}" class="btn btn-custom">View Uploaded Videos</a>
+    <a href="{% url 'question_list' %}" class="btn btn-custom">View Uploaded Questions</a>
+</div>
+{% endblock %}

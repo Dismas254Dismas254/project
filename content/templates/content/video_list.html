@@ -1,18 +1,21 @@
 {% extends 'content/base.html' %}
-{% block title %}Uploaded Videos{% endblock %}
+{% block title %}Videos{% endblock %}
 
 {% block content %}
-<h2>Uploaded Videos</h2>
+<h2>Video List</h2>
 <div class="row">
     {% for video in videos %}
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-3">
             <div class="card">
-                <video width="100%" controls>
-                    <source src="{{ video.file.url }}" type="video/mp4">
-                </video>
+                {% if video.thumbnail %}
+                    <img src="{{ video.thumbnail.url }}" class="card-img-top" alt="{{ video.title }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="No thumbnail available">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ video.title }}</h5>
-                    <a href="{% url 'video_detail' video.id %}" class="btn btn-custom">Watch</a>
+                    <p class="card-text">{{ video.description|truncatewords:15 }}</p>
+                    <a href="{% url 'video_detail' video.id %}" class="btn btn-primary">Watch</a>
                 </div>
             </div>
         </div>

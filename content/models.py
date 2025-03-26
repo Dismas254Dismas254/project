@@ -9,10 +9,11 @@ class Video(models.Model):
 
     def __str__(self):
         return self.title
+    
 
 class Question(models.Model):
     question_text = models.TextField()
     upload_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.question_text[:50]  # Show first 50 characters in admin panel
+        return self.question_text  # Show the full question text
